@@ -36,16 +36,20 @@ const startApplication = () => {
               'Exit'
           ],      
       })
-      .then((answer) => {
-          switch (answer.userResponse) {
+      .then((poo) => {
+          switch (poo.userResponse) {
               case 'View Departments':
                   console.log('viewingDepartments')
                   viewingDepartments()
                   break;
               case 'View Roles':
+                console.log('viewingRoles')
+                viewingRoles()
                   //roles();
                   break;
               case 'View Employees':
+                console.log('viewingEmployees')
+                viewingEmployees()
                   //employees();
                   break;
               case 'Exit':
@@ -69,11 +73,11 @@ const viewingDepartments =() => {
         'Add Departments',
     ],      
     })
-    .then((hinge)=> {
-      console.log(hinge)
+    .then((Squash)=> {
+      console.log(Squash)
       //hinge is a dating website which has nothing to do with what were doing, but it serves as the .then response which is the choice that was chosen and is then shown via console.log.
     
-      switch (hinge.userResponse) {
+      switch (Squash.userResponse) {
         case 'View all Departments':
           connection.query(
             'SELECT * FROM department',
@@ -97,8 +101,101 @@ const viewingDepartments =() => {
 
 
 
-    })
+})
+}
 
+
+const viewingRoles =() => {
+
+    inquirer
+        .prompt({
+              name: 'userResponse',
+              type: 'list',
+              message: 'What would you like to do?',
+        choices: [
+              'View all Roles',
+              'Add Roles',
+        ],      
+        })
+        .then((hinge)=> {
+            console.log(hinge)
+            //hinge is a dating website which has nothing to do with what were doing, but it serves as the .then response which is the choice that was chosen and is then shown via console.log.
+          
+        switch (hinge.userResponse) {
+            case 'View all Roles':
+                connection.query(
+                  'SELECT * FROM roles',
+                  (err, res) => {
+                      //if response exists
+                      if (res) {
+                          console.log('\n List of Roles: \n');
+                          res.forEach((response) => {console.log(response.title)});
+                          console.log('');
+                          initialQuestions();
+                      } else {
+                          console.log(`Error! ... ${err}`)
+                      }
+                  })
+                  break;
+        case 'Add Roles':
+                
+            break;
+    }
+      
+      
+      
+      
+})
+}
+
+
+
+const viewingEmployees =() => {
+
+    inquirer
+    .prompt({
+                name: 'userResponse',
+                type: 'list',
+                message: 'What would you like to do?',
+            choices: [
+                  'View all Employees',
+                  'Add Employees',
+              ],      
+              })
+              .then((Bing)=> {
+                console.log(Bing)
+                //hinge is a dating website which has nothing to do with what were doing, but it serves as the .then response which is the choice that was chosen and is then shown via console.log.
+              
+                switch (Bing.userResponse) {
+                  case 'View all Employees':
+                    connection.query(
+                      'SELECT * FROM Employees',
+                      (err, res) => {
+                          //if response exists
+                          if (res) {
+                              console.log('\n List of Employees: \n');
+                              res.forEach((response) => {console.log(response.name)});
+                              console.log('');
+                              initialQuestions();
+                          } else {
+                              console.log(`Error! ... ${err}`)
+                          }
+                      })
+                      break;
+        case 'Add Employees':
+                    
+            break;
+    }
+          
+          
+          
+          
+})
+    
+    
+
+
+              
   //startApplication()
 
 
