@@ -3,7 +3,7 @@ CREATE database employee_trackDB;
 
 USE employee_trackDB;
 
-CREATE TABLE employee (
+CREATE TABLE employees (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(30),
     last_name VARCHAR(30),

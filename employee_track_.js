@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
 //make connection to database to begin application
 
 const startApplication = () => {
-    console.log('WEEEEEEE')
+    //console.log('WEEEEEEE')
     
   // Asks initial question about what user 
       inquirer
@@ -35,7 +35,7 @@ const startApplication = () => {
           ],      
       })
       .then((anwser) => {
-          console.log("Saturday",anwser)
+          //console.log("Saturday",anwser)
            switch (anwser.userResponse) {
               case 'View Departments':
                   console.log('viewingDepartments')
@@ -48,7 +48,7 @@ const startApplication = () => {
                   break;
               case 'View Employees':
                 console.log('viewingEmployees')
-                viewingEmployee()
+                viewingEmployees()
                   //employees();
                   break;
               case 'Exit':
@@ -73,7 +73,7 @@ const viewingDepartments =() => {
     ],      
     })
     .then((anwser)=> {
-      console.log(anwser)
+      //console.log(anwser)
       //hinge is a dating website which has nothing to do with what were doing, but it serves as the .then response which is the choice that was chosen and is then shown via console.log.
     
       switch (anwser.deptResponse) {
@@ -116,11 +116,11 @@ const viewingRoles =() => {
               'Add Roles',
         ],      
         })
-        .then((hinge)=> {
-            console.log(hinge)
+        .then((anwser)=> {
+            //console.log(anwser)
             //hinge is a dating website which has nothing to do with what were doing, but it serves as the .then response which is the choice that was chosen and is then shown via console.log.
           
-        switch (hinge.rolesResponse) {
+        switch (anwser.rolesResponse) {
             case 'View all Roles':
                 connection.query(
                   'SELECT * FROM roles',
@@ -128,8 +128,8 @@ const viewingRoles =() => {
                       //if response exists
                       if (res) {
                           console.log('\n List of Roles: \n');
-                          res.forEach((response) => {console.log(response.first_name)});
-                          console.log('wombat');
+                          res.forEach((response) => {console.log(response.title)});
+                          //console.log('wombat');
                           startApplication();
                       } else {
                           console.log(`Error! ... ${err}`)
@@ -149,7 +149,7 @@ const viewingRoles =() => {
 
 
 
-const viewingEmployee =() => {
+const viewingEmployees =() => {
 
     inquirer
     .prompt({
@@ -161,17 +161,20 @@ const viewingEmployee =() => {
                   'Add Employees',
               ],      
               })
-              .then((bing)=> {
-                console.log(bing)
+              .then((anwser)=> {
+                //console.log(bing)
                 //hinge is a dating website which has nothing to do with what were doing, but it serves as the .then response which is the choice that was chosen and is then shown via console.log.
               
-                switch (bing.employeeResponse) {
+                switch (anwser.employeesResponse) {
                   case 'View all Employees':
+                    //console.log('toadstool')
                     connection.query(
-                      'SELECT * FROM Employees',
+                      'SELECT * FROM employees',
                       (err, res) => {
+                        //console.log('munchkins',res)
                           //if response exists
                           if (res) {
+                              //console.log('munchkins',res)
                               console.log('\n List of Employees: \n');
                               res.forEach((response) => {console.log(response.name)});
                               console.log('');

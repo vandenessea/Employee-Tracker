@@ -2,7 +2,7 @@
 -- CREATE database employee_trackDB;
 
 USE employee_trackDB;
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES  ('Alex', 'Vandenesse', 1, 1),
 ('Hamb', 'Sandvich', 2, 1),
 ('Gertrude', 'Gutherie', 4, 1),
