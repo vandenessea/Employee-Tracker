@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS employee_trackDB;
-CREATE database employee_trackDB;
+-- DROP DATABASE IF EXISTS employee_trackDB;
+-- CREATE database employee_trackDB;
 
 USE employee_trackDB;
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
