@@ -17,13 +17,10 @@ const connection = mysql.createConnection({
   });
 
 //make connection to database to begin application
-connection.connect((err) => {
-  if (err) throw err;
-  console.log('Connected!');
-  startApplication()
-})
 
 const startApplication = () => {
+    console.log('WEEEEEEE')
+    
   // Asks initial question about what user 
       inquirer
           .prompt({
@@ -203,7 +200,13 @@ const viewingEmployee =() => {
 
 
 }
-
+connection.connect((err) => {
+    if (err) throw err;
+    console.log('Connected!');
+    startApplication()
+    //console.log('WEEEEEEE')
+  })
+  
 
 
 
